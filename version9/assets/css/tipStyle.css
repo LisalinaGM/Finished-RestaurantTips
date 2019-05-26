@@ -1,0 +1,57 @@
+.search-box {
+	width: 85%;
+	height: 95%;
+	padding: 50px 50px 50px 50px;
+	background-color: #F6F6F6;
+}
+#content #mainContent .searchResult p {
+	font-size: 20px;
+	color: #F6F6F6;
+}
+.search-box h1{
+	font-size: 40px;
+	font-family: arial;
+}
+.searchResult {
+	background-color: #C0C0C0;
+	height: auto;
+	width: 85%;
+	border: 1px solid #F6F6F6;
+	padding: 15px 20px 15px 20px;
+	margin-top: 10px;
+}
+#content #mainContent h1, #content #mainContent .searchResult  h2 {
+	color: #F6F6F6;
+}
+#tipbox {
+	background-color: #cccccc;
+	padding: 5px 10px 5px 10px;
+	border-bottom: 2px solid #F6F6F6;
+	border-top: 2px solid #F6F6F6;
+}
+label {
+	font-family: arial;
+	color: #47382b;
+}
+
+#content #mainContent  .search-box h1{
+	color: #47382b;
+}
+#content #mainContent .confirm-box h1 {
+	text-align: center;
+	color:#47382b;
+	width: 85%;
+	height: 95%;
+	padding: 50px 50px 150px 50px;
+	background-color: #F6F6F6;
+	font-size: 40px;
+	font-family: arial;
+
+}
+#content #mainContent .confirm-box p
+{
+	text-align: center;
+	color:#47382b;
+	font-size: 20px;
+	font-family: arial;
+}
