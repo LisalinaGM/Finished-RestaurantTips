@@ -63,7 +63,7 @@
 				crossOrigin: true
 			  }).addTo(map);
 			  L.marker([59.861686, 17.633316]).addTo(map) //longitut /lattitut hämtas hit
-			.bindPopup('Här ligger restaurangen!')
+			.bindPopup('This is the location of the restaurant!')
 			.openPopup();
 			</script>
 				
