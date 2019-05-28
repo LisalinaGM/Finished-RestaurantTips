@@ -26,10 +26,6 @@
 	$rowPosition = $resultPosition -> fetch_assoc();
 	$latitude = $rowPosition['latitude'];
 	$longitude = $rowPosition['longitude'];
-	
-	echo $latitude;
-	echo "<br>";
-	echo $longitude;
 ?>
 <!doctype html>
 <html>
