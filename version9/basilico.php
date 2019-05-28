@@ -20,6 +20,16 @@
 	$queryAdmin = "SELECT adminid FROM Admin WHERE userid = '$userID'";
 	$resultAdmin = $connection -> query($queryAdmin);
 	$count = $resultAdmin-> num_rows;
+	$activeRestaurant = "Basilico";
+	$queryPosition = "SELECT latitude, longitude FROM Restaurants WHERE name = '$activeRestaurant'";
+	$resultPosition = $connection->query($queryPosition);
+	$rowPosition = $resultPosition -> fetch_assoc();
+	$latitude = $rowPosition['latitude'];
+	$longitude = $rowPosition['longitude'];
+	
+	echo $latitude;
+	echo "<br>";
+	echo $longitude;
 ?>
 <!doctype html>
 <html>
@@ -54,7 +64,7 @@
 				<div id="map"></div>
 				<p><a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></p>
 			<script>
-			  var map = L.map('map').setView([59.861686, 17.633316], 13); //Longitut/latitut hämtas hit
+			  var map = L.map('map').setView([<?php echo $latitude; ?>, <?php echo $longitude ?>], 13); //Longitut/latitut hämtas hit. Funkar när man istället skriver 59.861632, 17.633269
 			  L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=P2iACt3rAspoasQ6yeaY',{
 				tileSize: 512, 
 				zoomOffset: -1,
@@ -62,27 +72,14 @@
 				attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
 				crossOrigin: true
 			  }).addTo(map);
-			  L.marker([59.861686, 17.633316]).addTo(map) //longitut /lattitut hämtas hit
+			  L.marker([<?php echo $latitude; ?>, <?php echo $longitude ?>]).addTo(map) //longitut /lattitut hämtas hit
 			.bindPopup('This is the location of the restaurant!')
 			.openPopup();
 			</script>
 				
 			<aside id="commentsSection"> 
 				<h1>Tips</h1>
-							<?php
-						$uname = "dbtrain_1036";
-						$pass = "xotlno";
-						$host = "dbtrain.im.uu.se";
-						$dbname = "dbtrain_1036";
-			
-						$connection =  new mysqli($host, $uname, $pass, $dbname);
-			
-						if($connection -> connect_error)
-						{
-							die("Connection failed: ".$connection.connect_error);
-						}
-						
-						$activeRestaurant = "Basilico";
+					<?php
 						$sql = "SELECT tipid, title, content, email FROM Tips, Restaurants, Webusers WHERE Tips.restaurantid = Restaurants.id AND Restaurants.name = '$activeRestaurant'
 								AND Webusers.userid = Tips.userid";
 						$result = $connection->query($sql);
