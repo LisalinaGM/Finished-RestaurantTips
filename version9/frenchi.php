@@ -20,6 +20,12 @@
 	$queryAdmin = "SELECT adminid FROM Admin WHERE userid = '$userID'";
 	$resultAdmin = $connection -> query($queryAdmin);
 	$count = $resultAdmin-> num_rows;
+	$activeRestaurant = "Frenchi";
+	$queryPosition = "SELECT latitude, longitude FROM Restaurants WHERE name = '$activeRestaurant'";
+	$resultPosition = $connection->query($queryPosition);
+	$rowPosition = $resultPosition -> fetch_assoc();
+	$latitude = $rowPosition['latitude'];
+	$longitude = $rowPosition['longitude'];
 ?>
 <!doctype html>
 <html>
@@ -54,7 +60,7 @@
 		<div id="map"></div>
 		<p><a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></p>
     		<script>
-      		var map = L.map('map').setView([59.859111, 17.639168], 13); //Longitut/latitut hämtas hit
+      		var map = L.map('map').setView([<?php echo $latitude; ?>, <?php echo $longitude ?>], 13); //Longitut/latitut hämtas hit
       		L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=P2iACt3rAspoasQ6yeaY',{
        		tileSize: 512, 
         	zoomOffset: -1,
@@ -62,7 +68,7 @@
         	attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
         	crossOrigin: true
       		}).addTo(map);
-      		L.marker([59.859111, 17.639168]).addTo(map) //longitut /lattitut hämtas hit
+      		L.marker([<?php echo $latitude; ?>, <?php echo $longitude ?>]).addTo(map) //longitut /lattitut hämtas hit
     		.bindPopup('This is the location of the restaurant!')
     		.openPopup();
     		</script>
