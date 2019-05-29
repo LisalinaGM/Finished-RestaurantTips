@@ -23,7 +23,7 @@
 							<br><label for="email">Email-address</label>
 							<br><input type="text" id="email" name="email" placeholder="ex. lisa@gmail.com">
 							<br><label for="fname">Password</label>
-							<br><input type="text" id="password" name="password" placeholder="ex. xtlno">
+							<br><input type="password" id="password" name="password" placeholder="ex. xtlno">
 							<br><input type="submit" value="Register!">
 						</form>
 		
